@@ -36,7 +36,7 @@ export class DataService {
   delete(uri: string, key: string, id: string) {
     this.headers.delete("Authorization");
     this.headers.append("Authorization", "Bearer " + this._authenService.getLoggedInUser().access_token);
-    return this._http.delete(SystemConstants.BASE_API + uri + "/?" + key + "-" + id, { headers: this.headers }).map(this.extractData);
+    return this._http.delete(SystemConstants.BASE_API + uri + "/?" + key + "=" + id, { headers: this.headers }).map(this.extractData);
   }
   postFile(uri: string, data?: any) {
     let newHeader = new Headers();
