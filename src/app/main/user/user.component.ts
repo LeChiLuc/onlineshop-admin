@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NotificationService } from '../../core/services/notification.service';
 import { UploadService } from '../../core/services/upload.service';
 import { DataService } from '../../core/services/data.service';
+import { AuthenService } from '../../core/services/authen.service';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { MessageContstants } from '../../core/common/message.constants';
 import { SystemConstants } from '../../core/common/system.constants';
@@ -32,7 +33,8 @@ export class UserComponent implements OnInit {
     singleDatePicker: true
   };
 
-  constructor(private _dataService: DataService, private _notificationService: NotificationService, private _uploadService: UploadService) { }
+  constructor(private _dataService: DataService, private _notificationService: NotificationService,
+     private _uploadService: UploadService, public _authenService: AuthenService) { }
 
   ngOnInit() {
     this.loadRoles();
@@ -85,7 +87,7 @@ export class UserComponent implements OnInit {
       this.entity.Roles = this.myRoles;
       let fi = this.avatar.nativeElement;
       if(fi.files.length>0){
-        this._uploadService.postWithFile('/api/upload/saveImage',null,fi.files).then((imageUrl:string)=>{
+        this._uploadService.postWithFile('/api/upload/saveImage?type=avatar',null,fi.files).then((imageUrl:string)=>{
           this.entity.Avatar = imageUrl;
         }).then(()=>{
           this.saveData();
