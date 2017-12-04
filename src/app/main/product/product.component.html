@@ -320,9 +320,10 @@
                 <img [src]="baseFolder + image.Path" width="100" />
               </td>
               <td>
-                {{image.Caption}}
+                <input type="text" [(ngModel)]="image.Caption">
               </td>
               <td>
+                  <!-- <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Cập nhật sản phẩm" (click)="updateInfo()"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button> -->
                 <button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Xóa số lượng" (click)="deleteImage(image.ID)"><i class="fa fa-trash" aria-hidden="true"></i></button>
               </td>
             </tr>

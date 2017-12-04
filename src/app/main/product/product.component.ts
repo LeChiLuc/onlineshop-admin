@@ -176,6 +176,13 @@ export class ProductComponent implements OnInit {
     });
   }
 
+  public updateInfo() {
+      this._dataService.put('/api/productImage/update', JSON.stringify(this.productImages)).subscribe((response: any) => {
+        this.notificationService.printSuccessMessage(MessageContstants.UPDATED_OK_MSG);
+        this.loadProductImages(this.imageEntity.ProductId);
+      }, error => this._dataService.handleError(error));
+  }
+
   public saveProductImage(isValid: boolean) {
     if (isValid) {
       let fi = this.imagePath.nativeElement;

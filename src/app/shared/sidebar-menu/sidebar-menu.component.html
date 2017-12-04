@@ -3,7 +3,7 @@
     <h3>General</h3>
     <ul class="nav side-menu">
       <li>
-        <a>
+        <a routerLink="/main/home/index">
           <i class="fa fa-home"></i> Trang chủ</a>
       </li>
       <li *ngFor="let item of functions"><a><i class="fa {{item.IconCss}}"></i> {{item.Name}} <span *ngIf="item.ChildFunctions.length>0" class="fa fa-chevron-down"></span></a>
